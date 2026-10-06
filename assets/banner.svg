@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#311042"/>
+    </linearGradient>
+    
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      .pulse-wave {
+        stroke-dasharray: 600;
+        stroke-dashoffset: 600;
+        animation: pulse 4s linear infinite;
+      }
+      .node-pulse {
+        animation: nodeGlow 2s ease-in-out infinite alternate;
+      }
+      .float-card {
+        animation: float 5s ease-in-out infinite alternate;
+      }
+      @keyframes pulse {
+        0% { stroke-dashoffset: 600; }
+        100% { stroke-dashoffset: -600; }
+      }
+      @keyframes nodeGlow {
+        0% { r: 6px; opacity: 0.6; }
+        100% { r: 10px; opacity: 1; filter: drop-shadow(0 0 10px #38bdf8); }
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(-10px); }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="350" rx="16" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Grid Pattern Background -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40"/>
+    </pattern>
+    <rect width="1200" height="350" fill="url(#grid)"/>
+  </g>
+
+  <!-- Animated Telemetry Waveform Background Elements (Dynamic aspect) -->
+  <g fill="none" opacity="0.4">
+    <!-- Telemetry Trace Line 1 -->
+    <path d="M 50,260 Q 200,320 350,240 T 650,280 T 950,200 T 1150,250" stroke="#38bdf8" stroke-width="3" />
+    <path class="pulse-wave" d="M 50,260 Q 200,320 350,240 T 650,280 T 950,200 T 1150,250" stroke="#a855f7" stroke-width="4" />
+    
+    <!-- Telemetry Trace Line 2 -->
+    <path d="M 50,90 Q 250,30 450,100 T 850,50 T 1150,110" stroke="#818cf8" stroke-width="2" stroke-dasharray="8,8" />
+  </g>
+
+  <!-- Background Graphic Nodes -->
+  <g opacity="0.5">
+    <circle cx="150" cy="280" class="node-pulse" fill="#38bdf8" />
+    <circle cx="500" cy="260" class="node-pulse" fill="#c084fc" />
+    <circle cx="950" cy="200" class="node-pulse" fill="#818cf8" />
+  </g>
+
+  <!-- Foreground Main Titles (Ensured strictly in foreground, clear and unobstructed) -->
+  <g text-anchor="middle">
+    <!-- Icon / Sub-heading Tag -->
+    <g transform="translate(600, 75)">
+      <rect x="-180" y="-22" width="360" height="36" rx="18" fill="#1e293b" stroke="#818cf8" stroke-width="1.5" opacity="0.9"/>
+      <text x="0" y="2" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="2">
+        🔍 AUTOMATED OBSERVABILITY &amp; AIOps 📊
+      </text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="600" y="160" fill="url(#titleGrad)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="900" letter-spacing="-0.5" filter="url(#glow)">
+      Awesome Automated Application Observability
+    </text>
+
+    <!-- Subtitle Description -->
+    <text x="600" y="205" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="400" letter-spacing="0.5">
+      Curated Ecosystem of AIOps RCA Engines, APM Suites &amp; OpenTelemetry Pipelines
+    </text>
+  </g>
+
+  <!-- Feature Pills / Badges in Banner (Bottom Foreground) -->
+  <g transform="translate(600, 265)" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">
+    <!-- Pill 1: Distributed Tracing -->
+    <g transform="translate(-320, 0)">
+      <rect x="-90" y="-18" width="180" height="36" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="0" y="5" fill="#38bdf8">⚡ Distributed Tracing</text>
+    </g>
+    
+    <!-- Pill 2: Automated RCA -->
+    <g transform="translate(-110, 0)">
+      <rect x="-90" y="-18" width="180" height="36" rx="10" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
+      <text x="0" y="5" fill="#c084fc">🤖 Automated RCA &amp; AI</text>
+    </g>
+
+    <!-- Pill 3: OpenTelemetry -->
+    <g transform="translate(100, 0)">
+      <rect x="-90" y="-18" width="180" height="36" rx="10" fill="#0f172a" stroke="#818cf8" stroke-width="1.5"/>
+      <text x="0" y="5" fill="#818cf8">🔭 OpenTelemetry Native</text>
+    </g>
+
+    <!-- Pill 4: Unified Telemetry -->
+    <g transform="translate(310, 0)">
+      <rect x="-90" y="-18" width="180" height="36" rx="10" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+      <text x="0" y="5" fill="#34d399">📈 Metrics, Logs &amp; Traces</text>
+    </g>
+  </g>
+
+  <!-- Decorative Accent Line -->
+  <path d="M 300,225 L 900,225" stroke="url(#lineGrad)" stroke-width="1"/>
+</svg>
